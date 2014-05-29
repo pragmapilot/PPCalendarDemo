@@ -14,9 +14,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *addEventButton;
 @property (weak, nonatomic) IBOutlet UIButton *removeEventButton;
 
+// Event related stuff
 @property (strong, nonatomic) NSDate *eventStartDate;
 @property (strong, nonatomic, readonly) NSDate *eventEndDate;
 @property (copy, nonatomic) NSString *eventTitle;
+
+// UI stuff
+@property (strong, nonatomic) UIAlertView *alertView;
 
 @end
 
@@ -33,6 +37,8 @@
     self.removeEventButton.enabled = NO;
     
     self.eventTitle = @"#pragmaPilot's outstanding event!";
+    
+    self.alertView = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 }
 
 #pragma mark - Properties
@@ -47,6 +53,7 @@
 - (IBAction)addEventButtonTapped:(id)sender
 {
     EKEventStore *eventStore = [[EKEventStore alloc] init];
+    
     if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)])
     {
         [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
@@ -54,11 +61,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (error)
                 {
-                    // Do something with error
+                    self.alertView.message = @"Could not access the calendar because an error ocurred.";
+                    [self.alertView show];
                 }
                 else if (!granted)
                 {
-                    // Notify user permission was not granted, perhaps?
+                    self.alertView.message = @"Could not access the calendar because permission was not granted.";
+                    [self.alertView show];
                 }
                 else
                 {
@@ -93,20 +102,25 @@
                         
                         if(saveEventError)
                         {
-                            // Do something with error
+                            self.alertView.message = @"Could not add event to the calendar because an error ocurred.";
+                            [self.alertView show];
                         }
                         else
                         {
-                            // Notify success
                             self.addEventButton.enabled = NO;
                             self.removeEventButton.enabled = YES;
+                            
+                            self.alertView.message = @"The event was added to the calendar.";
+                            [self.alertView show];
                         }
                     }
                     else
                     {
-                        // Warn of existing event
                         self.addEventButton.enabled = NO;
                         self.removeEventButton.enabled = YES;
+                        
+                        self.alertView.message = @"Could not add event to the calendar because it already existed.";
+                        [self.alertView show];
                     }
                 }
             });
@@ -114,7 +128,8 @@
     }
     else
     {
-        // Notify operation not supported
+        self.alertView.message = @"Could not add event to the calendar because the feature is not supported.";
+        [self.alertView show];
     }
 }
 
@@ -127,11 +142,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (error)
                 {
-                    // Do something with error
+                    self.alertView.message = @"Could not access the calendar because an error ocurred.";
+                    [self.alertView show];
                 }
                 else if (!granted)
                 {
-                    // Notify user permission was not granted, perhaps?
+                    self.alertView.message = @"Could not access the calendar because permission was not granted.";
+                    [self.alertView show];
                 }
                 else
                 {
@@ -151,20 +168,25 @@
                         
                         if(removeEventError)
                         {
-                            // Do something with error
+                            self.alertView.message = @"Could not remove event from the calendar because an error ocurred.";
+                            [self.alertView show];
                         }
                         else
                         {
-                            // Notify success
                             self.removeEventButton.enabled = NO;
                             self.addEventButton.enabled = YES;
+                            
+                            self.alertView.message = @"The event was removed from the calendar";
+                            [self.alertView show];
                         }
                     }
                     else
                     {
-                        // Warn of non-existing event
                         self.addEventButton.enabled = NO;
                         self.removeEventButton.enabled = YES;
+                        
+                        self.alertView.message = @"Could not remove event from the calendar because it was not found.";
+                        [self.alertView show];
                     }
                 }
             });
@@ -172,7 +194,8 @@
     }
     else
     {
-        // Notify operation not supported
+        self.alertView.message = @"Could not remove event from the calendar because the feature is not supported.";
+        [self.alertView show];
     }
 }
 

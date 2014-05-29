@@ -21,7 +21,6 @@
 		FDAA5DCA19374F9D00D69226 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAA5DAC19374F9C00D69226 /* UIKit.framework */; };
 		FDAA5DD219374F9D00D69226 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDAA5DD019374F9D00D69226 /* InfoPlist.strings */; };
 		FDAA5DD419374F9D00D69226 /* PPCalendarDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA5DD319374F9D00D69226 /* PPCalendarDemoTests.m */; };
-		FDAA5DE0193773BA00D69226 /* EKEventStore+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA5DDF193773B900D69226 /* EKEventStore+Search.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +53,6 @@
 		FDAA5DCF19374F9D00D69226 /* PPCalendarDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPCalendarDemoTests-Info.plist"; sourceTree = "<group>"; };
 		FDAA5DD119374F9D00D69226 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FDAA5DD319374F9D00D69226 /* PPCalendarDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPCalendarDemoTests.m; sourceTree = "<group>"; };
-		FDAA5DDE193773B900D69226 /* EKEventStore+Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "EKEventStore+Search.h"; path = "Categories/EKEventStore+Search.h"; sourceTree = "<group>"; };
-		FDAA5DDF193773B900D69226 /* EKEventStore+Search.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "EKEventStore+Search.m"; path = "Categories/EKEventStore+Search.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +112,6 @@
 		FDAA5DAE19374F9C00D69226 /* PPCalendarDemo */ = {
 			isa = PBXGroup;
 			children = (
-				FDAA5DDD193751CC00D69226 /* Categories */,
 				FDAA5DB719374F9D00D69226 /* PPAppDelegate.h */,
 				FDAA5DB819374F9D00D69226 /* PPAppDelegate.m */,
 				FDAA5DBA19374F9D00D69226 /* Main.storyboard */,
@@ -154,15 +150,6 @@
 				FDAA5DD019374F9D00D69226 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		FDAA5DDD193751CC00D69226 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				FDAA5DDE193773B900D69226 /* EKEventStore+Search.h */,
-				FDAA5DDF193773B900D69226 /* EKEventStore+Search.m */,
-			);
-			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDAA5DE0193773BA00D69226 /* EKEventStore+Search.m in Sources */,
 				FDAA5DB919374F9D00D69226 /* PPAppDelegate.m in Sources */,
 				FDAA5DBF19374F9D00D69226 /* PPViewController.m in Sources */,
 				FDAA5DB519374F9C00D69226 /* main.m in Sources */,
@@ -475,6 +461,7 @@
 				FDAA5DD919374F9D00D69226 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FDAA5DDA19374F9D00D69226 /* Build configuration list for PBXNativeTarget "PPCalendarDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +470,7 @@
 				FDAA5DDC19374F9D00D69226 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
