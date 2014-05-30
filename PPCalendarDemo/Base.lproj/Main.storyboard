@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="GgD-Ff-MWt" secondAttribute="centerY" constant="16" id="5SK-81-1mO"/>
                             <constraint firstAttribute="centerY" secondItem="WkF-oh-7sO" secondAttribute="centerY" constant="-16" id="6HD-bF-IEK"/>

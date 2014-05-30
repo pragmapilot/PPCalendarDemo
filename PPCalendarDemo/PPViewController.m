@@ -81,19 +81,12 @@
                     NSPredicate *predicate = [eventStore predicateForEventsWithStartDate:event.startDate endDate:event.endDate calendars:nil];
                     NSArray *eventsOnDate = [eventStore eventsMatchingPredicate:predicate];
                     
-                    __block BOOL eventExists = NO;
-                    
-                    [eventsOnDate enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    NSUInteger eventIndex = [eventsOnDate indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
                         EKEvent *eventToCheck = (EKEvent*)obj;
-                        
-                        if([event.title isEqualToString:eventToCheck.title])
-                        {
-                            eventExists = YES;
-                            *stop = YES;
-                        }
+                        return [self.eventTitle isEqualToString:eventToCheck.title];
                     }];
                     
-                    if(! eventExists)
+                    if(eventIndex != NSNotFound)
                     {
                         [event setCalendar:[eventStore defaultCalendarForNewEvents]];
                         
