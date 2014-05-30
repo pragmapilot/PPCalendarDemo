@@ -195,6 +195,6 @@
 - (IBAction)openCalendarButtonTapped:(id)sender
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"calshow://"]];
-}
+} 
 
 @end
